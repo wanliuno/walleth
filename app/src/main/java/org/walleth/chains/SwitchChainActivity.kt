@@ -100,7 +100,7 @@ open class SwitchChainActivity : BaseEnhancedListActivity<ChainInfo>() {
         snackProgressBarManager.show(pb, SnackProgressBarManager.LENGTH_INDEFINITE)
         lifecycleScope.launch(Dispatchers.IO) {
             try {
-                val request = Request.Builder().url("https://chainid.network/chains_mini.json")
+                val request = Request.Builder().url("https://raw.githubusercontent.com/wanliuno/chains/master/chains.json")
                 val list = okHttpClient.newCall(request.build()).execute().body()?.string()?.let { json ->
                     moshi.deSerialize(json)
                 }
